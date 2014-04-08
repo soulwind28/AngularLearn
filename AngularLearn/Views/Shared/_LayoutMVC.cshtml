@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html ng-app="phonecat">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    
+    @*
+        ng-bind-template is used instead of binding inside the title tags
+        to avoid displaying the code for split second when the page is loaded
+    *@
+    <title ng-bind-template="Google Phone Gallery: {{query}}">t</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/bootstrap")
+    
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    <script src="@Url.Content("~/Scripts/app.js")"></script>
+    <script src="@Url.Content("~/Scripts/controllers.js")"></script>
+    <script src="@Url.Content("~/Scripts/filters.js")"></script>
+</head>
+<body>
+    @RenderBody()
+    @RenderSection("scripts", required: false)
+</body>
+</html>

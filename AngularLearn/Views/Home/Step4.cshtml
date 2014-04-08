@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Step4";
+}
+
+
+<div class="container-fluid" style="margin-top:10px;">
+    <div class="row-fluid">
+        <h4>http://docs.angularjs.org/tutorial/step_04</h4>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span2">
+        Search: <input ng-model="query">
+        </div>
+        <div class="span10">
+            Sort by:
+            <select ng-model="orderProp">
+              <option value="name">Alphabetical</option>
+              <option value="age">Newest</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12">
+            <ul class="phones">
+              <li ng-repeat="phone in phones | filter:query | orderBy:orderProp">
+                {{phone.name}}
+                <p>{{phone.snippet}}</p>
+              </li>
+            </ul>
+        </div>
+        <div class="span12">{{ helloName('Hubert') }}</div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span6">
+            <label>Name:</label>
+            <input type="text" ng-model="yourName" placeholder="Enter a name here">
+            <hr>
+            <h1>Hello {{yourName}}!</h1>
+        </div>
+        <div class="span6">
+            <button ng-click="changeName()" class="btn btn-primary">Change Name</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function PhoneListCtrl($scope) {
+        $scope.phones = [
+            {
+                name: "Nexus S",
+                snippet: "Fast just got faster with Nexus S.",
+                age: 0
+            },
+            {
+                name: "Motorola XOOM™ with Wi-Fi",
+                snippet: "The Next, Next Generation tablet.",
+                age: 1
+            },
+            {
+                name: "MOTOROLA XOOM™",
+                snippet: "The Next, Next Generation tablet.",
+                age: 2
+            }
+        ];
+
+        $scope.query = "Motorola";
+
+        $scope.hello = "Hello world!";
+
+        $scope.helloName = function (name) {
+            return "Hello " + name;
+        };
+
+        $scope.orderProp = "name";
+
+        $scope.changeName = function (newName) {
+            $scope.yourName = 'Thor';
+        };
+    }
+</script>

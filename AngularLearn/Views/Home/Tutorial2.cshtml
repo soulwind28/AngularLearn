@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Tutorial2";
+}
+
+<div ng-controller="PhoneListCtrl">
+    <input type="text" ng-model="yourName" placeholder="Enter a name here">
+    <ul>
+        <li ng-repeat="phone in phones">
+          {{phone.name}}
+          <p>{{phone.snippet}}</p>
+        </li>
+    </ul>
+    <p>Number of phones: {{phones.length}}</p>
+    <p>{{hello}}</p>
+    <p>{{helloName(yourName)}}</p>
+
+
+    <table>
+    <tr ng-repeat="phone in phones">
+        <td>{{phone.name}}</td>
+    </tr>
+    <tr ng-repeat="i in [0,1,2,3,4,5,6]">
+        <td>{{i}}</td>
+    </tr>
+    </table>
+
+</div>
+
+
+
+<script>
+    function PhoneListCtrl($scope) {
+        $scope.phones = [
+            {
+                "name": "Nexus S",
+                "snippet": "Fast just got faster with Nexus S."
+            },
+            {
+                "name": "Motorola XOOM™ with Wi-Fi",
+                "snippet": "The Next, Next Generation tablet."
+            },
+            {
+                "name": "MOTOROLA XOOM™",
+                "snippet": "The Next, Next Generation tablet."
+            }
+        ];
+
+        $scope.hello = "Hello world!";
+
+        $scope.helloName = function (name) {
+            return "Hello " + name;
+        };
+    }
+</script>

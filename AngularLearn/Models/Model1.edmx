@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RedBack_DEVModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="RedBack_DEVModelStoreContainer">
+          <EntitySet Name="Users" EntityType="RedBack_DEVModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UsersDetails" EntityType="RedBack_DEVModel.Store.UsersDetails" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_UsersDetails_Users" Association="RedBack_DEVModel.Store.FK_UsersDetails_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersDetails" EntitySet="UsersDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersDetails_Users1" Association="RedBack_DEVModel.Store.FK_UsersDetails_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersDetails" EntitySet="UsersDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersDetails_Users2" Association="RedBack_DEVModel.Store.FK_UsersDetails_Users2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersDetails" EntitySet="UsersDetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateStarted" Type="datetime" />
+          <Property Name="DateFinished" Type="datetime" />
+          <Property Name="EmploymentTypeID" Type="int" />
+          <Property Name="Hours" Type="decimal" Scale="2" />
+          <Property Name="AccessType" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedUserID" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedUserID" Type="int" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="DirectorUserID" Type="int" />
+          <Property Name="ManagerUserID" Type="int" />
+          <Property Name="StateID" Type="int" />
+          <Property Name="TimezoneID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersDetails">
+          <Key>
+            <PropertyRef Name="UsersDetailID" />
+          </Key>
+          <Property Name="UsersDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentCode" Type="bit" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="WorkPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomePhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomeAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="HomeSuburb" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomeState" Type="nvarchar" MaxLength="50" />
+          <Property Name="HomePostcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="MailAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="MailSuburb" Type="nvarchar" MaxLength="50" />
+          <Property Name="MailState" Type="nvarchar" MaxLength="50" />
+          <Property Name="MailPostcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="MailSameAsHome" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedUserID" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedUserID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UsersDetails_Users">
+          <End Role="Users" Type="RedBack_DEVModel.Store.Users" Multiplicity="1" />
+          <End Role="UsersDetails" Type="RedBack_DEVModel.Store.UsersDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UsersDetails">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersDetails_Users1">
+          <End Role="Users" Type="RedBack_DEVModel.Store.Users" Multiplicity="1" />
+          <End Role="UsersDetails" Type="RedBack_DEVModel.Store.UsersDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UsersDetails">
+              <PropertyRef Name="CreatedUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersDetails_Users2">
+          <End Role="Users" Type="RedBack_DEVModel.Store.Users" Multiplicity="1" />
+          <End Role="UsersDetails" Type="RedBack_DEVModel.Store.UsersDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UsersDetails">
+              <PropertyRef Name="UpdatedUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RedBack_DEVModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RedBack_DEVEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="RedBack_DEVModel.User" />
+          <EntitySet Name="UsersDetails" EntityType="RedBack_DEVModel.UsersDetail" />
+          <AssociationSet Name="FK_UsersDetails_Users" Association="RedBack_DEVModel.FK_UsersDetails_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersDetails" EntitySet="UsersDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersDetails_Users1" Association="RedBack_DEVModel.FK_UsersDetails_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersDetails" EntitySet="UsersDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersDetails_Users2" Association="RedBack_DEVModel.FK_UsersDetails_Users2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersDetails" EntitySet="UsersDetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DateStarted" Type="DateTime" Precision="3" />
+          <Property Name="DateFinished" Type="DateTime" Precision="3" />
+          <Property Name="EmploymentTypeID" Type="Int32" />
+          <Property Name="Hours" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AccessType" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedUserID" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedUserID" Type="Int32" />
+          <Property Name="EmailAddress" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="DirectorUserID" Type="Int32" />
+          <Property Name="ManagerUserID" Type="Int32" />
+          <Property Name="StateID" Type="Int32" />
+          <Property Name="TimezoneID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UsersDetails" Relationship="RedBack_DEVModel.FK_UsersDetails_Users" FromRole="Users" ToRole="UsersDetails" />
+          <NavigationProperty Name="UsersDetails1" Relationship="RedBack_DEVModel.FK_UsersDetails_Users1" FromRole="Users" ToRole="UsersDetails" />
+          <NavigationProperty Name="UsersDetails2" Relationship="RedBack_DEVModel.FK_UsersDetails_Users2" FromRole="Users" ToRole="UsersDetails" />
+        </EntityType>
+        <EntityType Name="UsersDetail">
+          <Key>
+            <PropertyRef Name="UsersDetailID" />
+          </Key>
+          <Property Name="UsersDetailID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentCode" Type="Boolean" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="WorkPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MobPhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="HomePhone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="HomeAddress" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="HomeSuburb" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="HomeState" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="HomePostcode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MailAddress" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="MailSuburb" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MailState" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MailPostcode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MailSameAsHome" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedUserID" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedUserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="RedBack_DEVModel.FK_UsersDetails_Users" FromRole="UsersDetails" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="RedBack_DEVModel.FK_UsersDetails_Users1" FromRole="UsersDetails" ToRole="Users" />
+          <NavigationProperty Name="User2" Relationship="RedBack_DEVModel.FK_UsersDetails_Users2" FromRole="UsersDetails" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_UsersDetails_Users">
+          <End Role="Users" Type="RedBack_DEVModel.User" Multiplicity="1" />
+          <End Role="UsersDetails" Type="RedBack_DEVModel.UsersDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UsersDetails">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersDetails_Users1">
+          <End Role="Users" Type="RedBack_DEVModel.User" Multiplicity="1" />
+          <End Role="UsersDetails" Type="RedBack_DEVModel.UsersDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UsersDetails">
+              <PropertyRef Name="CreatedUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersDetails_Users2">
+          <End Role="Users" Type="RedBack_DEVModel.User" Multiplicity="1" />
+          <End Role="UsersDetails" Type="RedBack_DEVModel.UsersDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UsersDetails">
+              <PropertyRef Name="UpdatedUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RedBack_DEVModelStoreContainer" CdmEntityContainer="RedBack_DEVEntities">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="RedBack_DEVModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="DateStarted" ColumnName="DateStarted" />
+                <ScalarProperty Name="DateFinished" ColumnName="DateFinished" />
+                <ScalarProperty Name="EmploymentTypeID" ColumnName="EmploymentTypeID" />
+                <ScalarProperty Name="Hours" ColumnName="Hours" />
+                <ScalarProperty Name="AccessType" ColumnName="AccessType" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedUserID" ColumnName="UpdatedUserID" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="DirectorUserID" ColumnName="DirectorUserID" />
+                <ScalarProperty Name="ManagerUserID" ColumnName="ManagerUserID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="TimezoneID" ColumnName="TimezoneID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersDetails">
+            <EntityTypeMapping TypeName="RedBack_DEVModel.UsersDetail">
+              <MappingFragment StoreEntitySet="UsersDetails">
+                <ScalarProperty Name="UsersDetailID" ColumnName="UsersDetailID" />
+                <ScalarProperty Name="CurrentCode" ColumnName="CurrentCode" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="MobPhone" ColumnName="MobPhone" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="HomeAddress" ColumnName="HomeAddress" />
+                <ScalarProperty Name="HomeSuburb" ColumnName="HomeSuburb" />
+                <ScalarProperty Name="HomeState" ColumnName="HomeState" />
+                <ScalarProperty Name="HomePostcode" ColumnName="HomePostcode" />
+                <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+                <ScalarProperty Name="MailSuburb" ColumnName="MailSuburb" />
+                <ScalarProperty Name="MailState" ColumnName="MailState" />
+                <ScalarProperty Name="MailPostcode" ColumnName="MailPostcode" />
+                <ScalarProperty Name="MailSameAsHome" ColumnName="MailSameAsHome" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserID" ColumnName="CreatedUserID" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedUserID" ColumnName="UpdatedUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

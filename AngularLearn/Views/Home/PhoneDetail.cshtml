@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <img ng-src="{{phone.images[0]}}" class="phone">
+ 
+            <h1>{{phone.name}}</h1>
+ 
+            <p>{{phone.description}}</p>
+ 
+            <ul class="phone-thumbs">
+              <li ng-repeat="img in phone.images">
+                <img ng-src="{{img}}">
+              </li>
+            </ul>
+ 
+            <ul class="specs">
+                <li>
+                    <span>Availability and Networks</span>
+                    <dl>
+                        <dt>Availability</dt>
+                        <dd ng-repeat="availability in phone.availability">{{availability}}</dd>
+                    </dl>
+                </li>
+            </ul>
+
+            <ul class="specs">
+                <li>
+                    <dl>
+                        <dt>Additional Features</dt>
+                        <dd>{{phone.additionalFeatures}}</dd>
+                    </dl>
+                </li>
+            </ul>
+
+            <ul class="specs span6">
+                <li>
+                    <span>Battery</span>
+                    <dl>
+                        <dt>Standby Time</dt>
+                        <dd>{{phone.battery.standbyTime}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Talk Time</dt>
+                        <dd>{{phone.battery.talkTime}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Type</dt>
+                        <dd>{{phone.battery.type}}</dd>
+                    </dl>
+                    <dl>
+                        <dt>Infrared</dt>
+                        <dd>{{phone.connectivity.infrared | uppercase}}</dd>
+                        <dt>GPS</dt>
+                        <dd>{{phone.connectivity.gps | testFilter}}</dd>
+                        <dt>Built in filter</dt>
+                        <dd>{{ "uppercase" | uppercase }}</dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
